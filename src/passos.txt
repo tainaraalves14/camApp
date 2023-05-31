@@ -1,0 +1,46 @@
+1 - Atualizar versão do ionic "npm i -g @ionic/cli"
+
+2- Instalar o capacitor da camera "npm install @capacitor/camera @capacitor/preferences @capacitor/filesystem"
+
+3-  Instalar a pwa elements "npm install @ionic/pwa-elements"
+
+4 - Adicionar ao main.ts 
+
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
+
+// Call the element loader after the platform has been bootstrapped
+defineCustomElements(window);
+
+5 - Instalar a pwa do angular "ng add @angular/pwa"
+
+6 - Colocar o app em produção ionic build --prod
+
+7 -  Copiar o botao fab e colar no html:
+
+ <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="dark" >
+      <ion-icon name="camera"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+8 - Gerar o serviço de fotos "ionic g service services/foto"
+
+9 - Colar os imports no serviço :
+
+import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
+import { Filesystem, Directory } from '@capacitor/filesystem';
+import { Preferences } from '@capacitor/preferences';
+
+10 - Criar uma interface com o nome de foto com as propriedades: 
+ filepath: string;
+ webviewPath?: string;
+
+11 - Adicionar ao foto.service :
+
+  // Lista das fotos armazenadas no dispositivo
+  fotos: Foto[] = [];
+   
+  //Cria uma variavel para armazenar o local fisico (pasta) das fotos
+  private FOTO_ARMAZENAMENTO: string = "fotos";
+
+12 - 
